@@ -29,9 +29,9 @@ function crear(data2){
 }
 
 function crear2(){
-    readTextFile("superher0es.json", function(text){
+    readTextFile("./superheroes.json", function(text){
         var data = JSON.parse(text);
-        //console.log(data);
+        console.log(data);
         crear(data);
     });
 
@@ -39,12 +39,12 @@ function crear2(){
 
 function readTextFile(file, callback) {
     var rawFile = new XMLHttpRequest()
-    rawFile.overrideMimeType("Application/Json");
-    rawFile.open("Get", file, true)
+    rawFile.overrideMimeType("application/json");
+    rawFile.open("GET", file, true)
     rawFile.onreadystatechange = function() {
         if (rawFile.readyState === 4 && rawFile.status == "200") {
-            callback(raWFile.responseText);
+            callback(rawFile.responseText);
         }
     }
-    rawFile.Send(null);
+    rawFile.send(null);
 }
