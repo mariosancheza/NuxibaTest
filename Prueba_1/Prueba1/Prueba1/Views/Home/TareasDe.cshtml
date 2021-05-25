@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Prueba1.Models.ToDo_s>
+
+@{
+    ViewData["Title"] = "TareasDe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tareas De @ViewBag.Nombre</h2>
+
+<div class="row">
+    <div class="col-md-2">
+        <form name="NuevaTarea" id="NuevaTarea" method="post" action="~/Home/FormularioCrearTarea">
+            <input id="txtId" name="txtId" type="number" hidden value="@ViewBag.IdUser" />
+            <input id="txtName" name="txtName" type="text" hidden value="@ViewBag.Nombre" />
+            <input id="CreateToDo" name="CreateToDo" type="submit" Class="btn btn-default" value="Crear Tarea" />
+        </form>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.completed)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.completed)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p></p>
+<div class="row">
+    <a asp-action="Index">Regresar a la lista de usuarios</a>
+</div>

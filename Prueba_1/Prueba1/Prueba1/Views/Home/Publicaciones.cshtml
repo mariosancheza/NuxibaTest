@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Prueba1.Models.Posts>
+
+@{
+    ViewData["Title"] = "ComentariosDe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Publicaciones De @ViewBag.Nombre</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                T&iacute;tulo
+            </th>
+            <th>
+                Publicaci&oacute;n
+            </th>
+            <th>Comentarios</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.body)
+                </td>
+                <td>
+                    @await Html.PartialAsync("Comments", Comments.GetComments(item.id))
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+<p></p>
+<div class="row">
+    <a asp-action="Index">Regresar a la lista de usuarios</a>
+</div>

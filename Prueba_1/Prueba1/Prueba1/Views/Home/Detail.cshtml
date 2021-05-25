@@ -1,0 +1,90 @@
+﻿@model Prueba1.Models.User
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles de usuario</h2>
+
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.username)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.username)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.phone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.phone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.website)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.website)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.company)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.company)
+        </dd>
+    </dl>
+</div>
+<p></p>
+@if (Model.id != -1)
+{
+<div class="row">
+    <div class="col-md-2">
+        <form name="DetalleUserForm" id="DetalleUserForm" method="post" action="~/Home/Publicaciones">
+            <input id="txtId" name="txtId" type="number" hidden value="@Model.id" />
+            <input id="txtName" name="txtName" type="text" hidden value="@Model.name" />
+            <input id="posts" name="posts" type="submit" Class="btn btn-default" value="posts" />
+        </form>
+    </div>
+    <div class="col-md-2">
+        <form name="DetalleUserForm" id="DetalleUserForm" method="post" action="~/Home/TareasDe">
+            <input id="txtId" name="txtId" type="number" hidden value="@Model.id" />
+            <input id="txtName" name="txtName" type="text" hidden value="@Model.name" />
+            <input id="todos" name="todos" type="submit" Class="btn btn-default" value="todos" />
+        </form>
+    </div>
+</div>
+
+}
+
+
+<p></p>
+<div class="row">
+    <a asp-action="Index">Regresar a la lista de usuarios</a>
+</div>
